@@ -24,6 +24,7 @@
 		8A6BEE2A2336848600B19972 /* PoseMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */; };
 		8A6BEE2C233684AD00B19972 /* DrawingJointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */; };
 		8A6BEE2E233684E300B19972 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2D233684E300B19972 /* VideoCapture.swift */; };
+		8A6BEE3023368EAE00B19972 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2F23368EAE00B19972 /* Measure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseMatchingViewController.swift; sourceTree = "<group>"; };
 		8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingJointView.swift; sourceTree = "<group>"; };
 		8A6BEE2D233684E300B19972 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		8A6BEE2F23368EAE00B19972 /* Measure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */,
 				8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */,
 				8A6BEE2D233684E300B19972 /* VideoCapture.swift */,
+				8A6BEE2F23368EAE00B19972 /* Measure.swift */,
 			);
 			path = PosingAlarmClock;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			files = (
 				8A6BEE242336842D00B19972 /* HeatmapPostProcessor.swift in Sources */,
 				8A6BEE222336841700B19972 /* PredictedPoint.swift in Sources */,
+				8A6BEE3023368EAE00B19972 /* Measure.swift in Sources */,
 				8A6BEDFE233677EE00B19972 /* SecondViewController.swift in Sources */,
 				8A6BEE14233682DE00B19972 /* model_cpm.mlmodel in Sources */,
 				8A6BEE2A2336848600B19972 /* PoseMatchingViewController.swift in Sources */,
