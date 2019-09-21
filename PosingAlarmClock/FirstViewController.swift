@@ -10,7 +10,10 @@ import UIKit
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var alarmList = ["テスト", "テスト"]
+    var alarmList = [
+        ["7:00", true],
+        ["8:00", false]
+    ]
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -23,7 +26,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel!.text = alarmList[indexPath.row]
+        let label = cell.viewWithTag(1) as! UILabel
+        label.text = alarmList[indexPath.row][0] as! String
+        let uiSwitch = cell.viewWithTag(2) as! UISwitch
+        uiSwitch.isOn = alarmList[indexPath.row][1] as! Bool
         return cell
     }
 }

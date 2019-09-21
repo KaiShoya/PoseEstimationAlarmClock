@@ -10,7 +10,11 @@ import UIKit
 
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var alarmList = ["ヨガ教室体験チケット", "フィットネスクラブ体験チケット"]
+    var alarmList = [
+        "「フィットネスNEO」1日無料体験チケット",
+        "ダンベル専門ショップ「ダンベラー」10%オフチケット",
+        "サバスプロテイン500円オフチケット"
+    ]
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {

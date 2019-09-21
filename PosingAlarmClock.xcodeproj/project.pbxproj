@@ -21,10 +21,10 @@
 		8A6BEE242336842D00B19972 /* HeatmapPostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE232336842D00B19972 /* HeatmapPostProcessor.swift */; };
 		8A6BEE262336843B00B19972 /* MovingAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE252336843B00B19972 /* MovingAverageFilter.swift */; };
 		8A6BEE282336844600B19972 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE272336844600B19972 /* UIImage+CVPixelBuffer.swift */; };
-		8A6BEE2A2336848600B19972 /* PoseMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */; };
 		8A6BEE2C233684AD00B19972 /* DrawingJointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */; };
 		8A6BEE2E233684E300B19972 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2D233684E300B19972 /* VideoCapture.swift */; };
 		8A6BEE3023368EAE00B19972 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2F23368EAE00B19972 /* Measure.swift */; };
+		8AF755462336C07300BCCCFA /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF755452336C07300BCCCFA /* AlarmSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,10 +44,10 @@
 		8A6BEE232336842D00B19972 /* HeatmapPostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapPostProcessor.swift; sourceTree = "<group>"; };
 		8A6BEE252336843B00B19972 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
 		8A6BEE272336844600B19972 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
-		8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseMatchingViewController.swift; sourceTree = "<group>"; };
 		8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingJointView.swift; sourceTree = "<group>"; };
 		8A6BEE2D233684E300B19972 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		8A6BEE2F23368EAE00B19972 /* Measure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
+		8AF755452336C07300BCCCFA /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +92,10 @@
 				8A6BEE04233677EF00B19972 /* LaunchScreen.storyboard */,
 				8A6BEE07233677EF00B19972 /* Info.plist */,
 				8A6BEE0D23367C2B00B19972 /* PoseEstimationViewController.swift */,
-				8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */,
 				8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */,
 				8A6BEE2D233684E300B19972 /* VideoCapture.swift */,
 				8A6BEE2F23368EAE00B19972 /* Measure.swift */,
+				8AF755452336C07300BCCCFA /* AlarmSettingViewController.swift */,
 			);
 			path = PosingAlarmClock;
 			sourceTree = "<group>";
@@ -187,7 +187,6 @@
 				8A6BEE3023368EAE00B19972 /* Measure.swift in Sources */,
 				8A6BEDFE233677EE00B19972 /* SecondViewController.swift in Sources */,
 				8A6BEE14233682DE00B19972 /* model_cpm.mlmodel in Sources */,
-				8A6BEE2A2336848600B19972 /* PoseMatchingViewController.swift in Sources */,
 				8A6BEE282336844600B19972 /* UIImage+CVPixelBuffer.swift in Sources */,
 				8A6BEDFC233677EE00B19972 /* FirstViewController.swift in Sources */,
 				8A6BEE0E23367C2B00B19972 /* PoseEstimationViewController.swift in Sources */,
@@ -197,6 +196,7 @@
 				8A6BEE2C233684AD00B19972 /* DrawingJointView.swift in Sources */,
 				8A6BEDF8233677EE00B19972 /* AppDelegate.swift in Sources */,
 				8A6BEDFA233677EE00B19972 /* SceneDelegate.swift in Sources */,
+				8AF755462336C07300BCCCFA /* AlarmSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
