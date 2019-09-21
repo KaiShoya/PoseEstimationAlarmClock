@@ -19,7 +19,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="アラーム設定" id="NXm-bU-qAw"/>
+                                    <navigationItem title="アラーム設定" id="NXm-bU-qAw">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="edit" id="esy-41-ysd"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="pdN-s5-ksA"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ysy-Ao-EOb">
@@ -110,7 +113,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="ocu-vw-sWW" kind="relationship" relationship="viewControllers" id="l2F-kR-6if"/>
+                        <segue destination="VL6-d9-qXS" kind="relationship" relationship="viewControllers" id="l2F-kR-6if"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -129,18 +132,109 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="ポーズ選択" id="vRe-PL-6SA"/>
+                                    <navigationItem title="ポーズ選択" id="vRe-PL-6SA">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="u43-VM-heI">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UBM-Gd-xJ3">
+                                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="カメラ起動"/>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Hnx-sd-Tkj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ポーズ選択" image="rectangle.stack.person.crop" catalog="system" id="q4A-5T-CXB" userLabel="Third"/>
+                    <navigationItem key="navigationItem" title="ポーズ選択" id="8Tj-G2-9w5">
+                        <barButtonItem key="rightBarButtonItem" title="カメラ起動" style="plain" id="S34-Jh-jzv">
+                            <connections>
+                                <segue destination="uow-Sb-u15" kind="showDetail" id="X8V-1d-R42"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heh-q6-bf6" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="1035"/>
+            <point key="canvasLocation" x="1657.9710144927537" y="1034.5982142857142"/>
+        </scene>
+        <!--Pose Estimation View Controller-->
+        <scene sceneID="a1Y-eu-W3b">
+            <objects>
+                <viewController id="uow-Sb-u15" customClass="PoseEstimationViewController" customModule="PosingAlarmClock" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ago-Ar-Bd0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOv-mw-Fna" userLabel="Image View">
+                                <rect key="frame" x="0.0" y="56" width="414" height="351"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVD-Kk-Oq0">
+                                        <rect key="frame" x="8" y="0.0" width="398" height="351"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6i-xX-eUe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="このポーズをしよう！" id="tLG-WJ-AwY">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="stop" id="M2D-hA-suL">
+                                            <connections>
+                                                <action selector="unwindToRootViewControllerWithSegue:" destination="uow-Sb-u15" id="2Vm-lD-bg7"/>
+                                                <segue destination="BZe-ID-hgn" kind="unwind" unwindAction="unwindToRootViewControllerWithSegue:" id="4rx-I8-Kg2"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zf3-TZ-R2a" userLabel="Video Preview">
+                                <rect key="frame" x="0.0" y="415" width="414" height="298"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Drx-7h-B0p" userLabel="Joint View" customClass="DrawingJointView" customModule="PosingAlarmClock" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="415" width="414" height="341"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="061-xz-7xw"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="rVD-Kk-Oq0" id="fT5-ce-xvg"/>
+                        <outlet property="jointView" destination="Drx-7h-B0p" id="4tE-lE-C6a"/>
+                        <outlet property="videoPreview" destination="Zf3-TZ-R2a" id="Bb2-HA-CSq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MOR-nC-3wX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BZe-ID-hgn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2628.985507246377" y="1034.5982142857142"/>
+        </scene>
+        <!--ポーズ選択-->
+        <scene sceneID="haZ-hm-JwO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VL6-d9-qXS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="ポーズ選択" image="rectangle.stack.person.crop" catalog="system" id="q4A-5T-CXB" userLabel="Third"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A4a-m1-o5O">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ocu-vw-sWW" kind="relationship" relationship="rootViewController" id="Usw-2z-XBg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXu-QB-ZB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747.82608695652175" y="1034.5982142857142"/>
         </scene>
     </scenes>
     <resources>

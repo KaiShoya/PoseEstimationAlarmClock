@@ -14,6 +14,16 @@
 		8A6BEE01233677EE00B19972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6BEDFF233677EE00B19972 /* Main.storyboard */; };
 		8A6BEE03233677EF00B19972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6BEE02233677EF00B19972 /* Assets.xcassets */; };
 		8A6BEE06233677EF00B19972 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6BEE04233677EF00B19972 /* LaunchScreen.storyboard */; };
+		8A6BEE0E23367C2B00B19972 /* PoseEstimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE0D23367C2B00B19972 /* PoseEstimationViewController.swift */; };
+		8A6BEE13233682DE00B19972 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE11233682DE00B19972 /* model_hourglass.mlmodel */; };
+		8A6BEE14233682DE00B19972 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE12233682DE00B19972 /* model_cpm.mlmodel */; };
+		8A6BEE222336841700B19972 /* PredictedPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE212336841700B19972 /* PredictedPoint.swift */; };
+		8A6BEE242336842D00B19972 /* HeatmapPostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE232336842D00B19972 /* HeatmapPostProcessor.swift */; };
+		8A6BEE262336843B00B19972 /* MovingAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE252336843B00B19972 /* MovingAverageFilter.swift */; };
+		8A6BEE282336844600B19972 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE272336844600B19972 /* UIImage+CVPixelBuffer.swift */; };
+		8A6BEE2A2336848600B19972 /* PoseMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */; };
+		8A6BEE2C233684AD00B19972 /* DrawingJointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */; };
+		8A6BEE2E233684E300B19972 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BEE2D233684E300B19972 /* VideoCapture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +36,16 @@
 		8A6BEE02233677EF00B19972 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A6BEE05233677EF00B19972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A6BEE07233677EF00B19972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A6BEE0D23367C2B00B19972 /* PoseEstimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimationViewController.swift; sourceTree = "<group>"; };
+		8A6BEE11233682DE00B19972 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = model_hourglass.mlmodel; path = "../../../../github/PoseEstimation-CoreML/PoseEstimation-CoreML/model_hourglass.mlmodel"; sourceTree = "<group>"; };
+		8A6BEE12233682DE00B19972 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = model_cpm.mlmodel; path = "../../../../github/PoseEstimation-CoreML/PoseEstimation-CoreML/model_cpm.mlmodel"; sourceTree = "<group>"; };
+		8A6BEE212336841700B19972 /* PredictedPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedPoint.swift; sourceTree = "<group>"; };
+		8A6BEE232336842D00B19972 /* HeatmapPostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapPostProcessor.swift; sourceTree = "<group>"; };
+		8A6BEE252336843B00B19972 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
+		8A6BEE272336844600B19972 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseMatchingViewController.swift; sourceTree = "<group>"; };
+		8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingJointView.swift; sourceTree = "<group>"; };
+		8A6BEE2D233684E300B19972 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +78,9 @@
 		8A6BEDF6233677EE00B19972 /* PosingAlarmClock */ = {
 			isa = PBXGroup;
 			children = (
+				8A6BEE202336840400B19972 /* Common */,
+				8A6BEE12233682DE00B19972 /* model_cpm.mlmodel */,
+				8A6BEE11233682DE00B19972 /* model_hourglass.mlmodel */,
 				8A6BEDF7233677EE00B19972 /* AppDelegate.swift */,
 				8A6BEDF9233677EE00B19972 /* SceneDelegate.swift */,
 				8A6BEDFB233677EE00B19972 /* FirstViewController.swift */,
@@ -66,8 +89,23 @@
 				8A6BEE02233677EF00B19972 /* Assets.xcassets */,
 				8A6BEE04233677EF00B19972 /* LaunchScreen.storyboard */,
 				8A6BEE07233677EF00B19972 /* Info.plist */,
+				8A6BEE0D23367C2B00B19972 /* PoseEstimationViewController.swift */,
+				8A6BEE292336848600B19972 /* PoseMatchingViewController.swift */,
+				8A6BEE2B233684AD00B19972 /* DrawingJointView.swift */,
+				8A6BEE2D233684E300B19972 /* VideoCapture.swift */,
 			);
 			path = PosingAlarmClock;
+			sourceTree = "<group>";
+		};
+		8A6BEE202336840400B19972 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8A6BEE212336841700B19972 /* PredictedPoint.swift */,
+				8A6BEE232336842D00B19972 /* HeatmapPostProcessor.swift */,
+				8A6BEE252336843B00B19972 /* MovingAverageFilter.swift */,
+				8A6BEE272336844600B19972 /* UIImage+CVPixelBuffer.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +179,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6BEE242336842D00B19972 /* HeatmapPostProcessor.swift in Sources */,
+				8A6BEE222336841700B19972 /* PredictedPoint.swift in Sources */,
 				8A6BEDFE233677EE00B19972 /* SecondViewController.swift in Sources */,
+				8A6BEE14233682DE00B19972 /* model_cpm.mlmodel in Sources */,
+				8A6BEE2A2336848600B19972 /* PoseMatchingViewController.swift in Sources */,
+				8A6BEE282336844600B19972 /* UIImage+CVPixelBuffer.swift in Sources */,
 				8A6BEDFC233677EE00B19972 /* FirstViewController.swift in Sources */,
+				8A6BEE0E23367C2B00B19972 /* PoseEstimationViewController.swift in Sources */,
+				8A6BEE2E233684E300B19972 /* VideoCapture.swift in Sources */,
+				8A6BEE13233682DE00B19972 /* model_hourglass.mlmodel in Sources */,
+				8A6BEE262336843B00B19972 /* MovingAverageFilter.swift in Sources */,
+				8A6BEE2C233684AD00B19972 /* DrawingJointView.swift in Sources */,
 				8A6BEDF8233677EE00B19972 /* AppDelegate.swift in Sources */,
 				8A6BEDFA233677EE00B19972 /* SceneDelegate.swift in Sources */,
 			);
