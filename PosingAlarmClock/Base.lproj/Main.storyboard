@@ -368,6 +368,11 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view contentMode="scaleToFill" id="5yu-8g-l9m" userLabel="Joint View" customClass="DrawingJointView" customModule="PosingAlarmClock" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="56" width="414" height="307"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" id="Zf3-TZ-R2a" userLabel="Video Preview">
                                 <rect key="frame" x="0.0" y="371" width="414" height="414"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -376,55 +381,38 @@
                                     <constraint firstAttribute="width" secondItem="Zf3-TZ-R2a" secondAttribute="height" multiplier="1:1" id="iaB-qT-7mj" userLabel="aspect = 3:4"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMR-Qo-paA">
-                                <rect key="frame" x="0.0" y="761" width="414" height="81"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJv-gm-Nz0">
-                                        <rect key="frame" x="237" y="8" width="169" height="40"/>
-                                        <state key="normal" title="ポーズを決めずに止める"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kl-Qo-vbT">
-                                        <rect key="frame" x="8" y="18" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="hJv-gm-Nz0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JMR-Qo-paA" secondAttribute="leading" constant="20" symbolic="YES" id="DRD-ei-bxZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="hJv-gm-Nz0" secondAttribute="bottom" constant="33" id="Eks-5X-7xC"/>
-                                    <constraint firstItem="hJv-gm-Nz0" firstAttribute="trailing" secondItem="JMR-Qo-paA" secondAttribute="trailingMargin" id="m62-fG-7Ws"/>
-                                    <constraint firstItem="hJv-gm-Nz0" firstAttribute="top" secondItem="JMR-Qo-paA" secondAttribute="topMargin" id="w2l-Pg-qyx"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" id="Drx-7h-B0p" userLabel="Joint View" customClass="DrawingJointView" customModule="PosingAlarmClock" customModuleProvider="target">
                                 <rect key="frame" x="-4" y="407" width="414" height="341"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7s-Mi-hB6">
+                                <rect key="frame" x="20" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="JMR-Qo-paA" firstAttribute="top" secondItem="ago-Ar-Bd0" secondAttribute="top" constant="761" id="5l8-Em-byh"/>
-                            <constraint firstItem="JMR-Qo-paA" firstAttribute="leading" secondItem="o6i-xX-eUe" secondAttribute="leading" id="B0C-M6-kZb"/>
-                            <constraint firstItem="JMR-Qo-paA" firstAttribute="trailing" secondItem="o6i-xX-eUe" secondAttribute="trailing" id="Cfv-N1-8yG"/>
+                            <constraint firstItem="o6i-xX-eUe" firstAttribute="leading" secondItem="jOv-mw-Fna" secondAttribute="leading" id="DEB-8v-wJ2"/>
                             <constraint firstAttribute="bottom" secondItem="jOv-mw-Fna" secondAttribute="bottom" constant="435" id="E9F-A2-L7c"/>
                             <constraint firstItem="jOv-mw-Fna" firstAttribute="top" secondItem="o6i-xX-eUe" secondAttribute="bottom" constant="12" id="GZd-9D-Wqx"/>
+                            <constraint firstItem="J7s-Mi-hB6" firstAttribute="top" secondItem="061-xz-7xw" secondAttribute="top" constant="20" id="Prj-ed-yuM"/>
                             <constraint firstItem="o6i-xX-eUe" firstAttribute="top" secondItem="061-xz-7xw" secondAttribute="top" id="T18-zr-Suv"/>
-                            <constraint firstItem="JMR-Qo-paA" firstAttribute="trailing" secondItem="jOv-mw-Fna" secondAttribute="trailing" id="iED-dj-hGV"/>
-                            <constraint firstItem="JMR-Qo-paA" firstAttribute="trailing" secondItem="Zf3-TZ-R2a" secondAttribute="trailing" id="mfY-3G-GqT"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="JMR-Qo-paA" secondAttribute="bottom" constant="-34" id="om1-DS-ZqW"/>
-                            <constraint firstItem="JMR-Qo-paA" firstAttribute="leading" secondItem="jOv-mw-Fna" secondAttribute="leading" id="prV-0W-Bvk"/>
-                            <constraint firstItem="JMR-Qo-paA" firstAttribute="leading" secondItem="Zf3-TZ-R2a" secondAttribute="leading" id="wpR-od-d0I"/>
+                            <constraint firstItem="J7s-Mi-hB6" firstAttribute="leading" secondItem="ago-Ar-Bd0" secondAttribute="leadingMargin" id="Z0X-Js-frT"/>
+                            <constraint firstItem="061-xz-7xw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="J7s-Mi-hB6" secondAttribute="trailing" symbolic="YES" id="uJw-dq-agP"/>
+                            <constraint firstItem="o6i-xX-eUe" firstAttribute="trailing" secondItem="Zf3-TZ-R2a" secondAttribute="trailing" id="ukV-Yb-tdh"/>
+                            <constraint firstItem="o6i-xX-eUe" firstAttribute="trailing" secondItem="jOv-mw-Fna" secondAttribute="trailing" id="x00-s7-t2a"/>
+                            <constraint firstItem="o6i-xX-eUe" firstAttribute="leading" secondItem="Zf3-TZ-R2a" secondAttribute="leading" id="zBD-tu-ZG6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="061-xz-7xw"/>
                     </view>
                     <connections>
+                        <outlet property="imageJointView" destination="5yu-8g-l9m" id="PrH-nV-W2h"/>
                         <outlet property="imageView" destination="rVD-Kk-Oq0" id="fT5-ce-xvg"/>
                         <outlet property="jointView" destination="Drx-7h-B0p" id="4tE-lE-C6a"/>
-                        <outlet property="resultLabel" destination="5Kl-Qo-vbT" id="Xkf-WP-h1G"/>
+                        <outlet property="resultLabel" destination="J7s-Mi-hB6" id="bLY-Z5-FTz"/>
                         <outlet property="videoPreview" destination="Zf3-TZ-R2a" id="Bb2-HA-CSq"/>
                     </connections>
                 </viewController>

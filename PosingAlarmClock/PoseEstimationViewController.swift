@@ -12,34 +12,53 @@ import Vision
 
 class PoseEstimationViewController: UIViewController {
 
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageJointView: DrawingJointView!
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
     var capturedJointView: DrawingJointView!
     var capturedPoints: [CapturedPoint?] = []
+    var capturedPointsModel: [CapturedPoint?] = []
     
     var videoCapture: VideoCapture!
 
     typealias EstimationModel = model_cpm
 
     var request: VNCoreMLRequest?
+    var requestModel: VNCoreMLRequest?
     var visionModel: VNCoreMLModel?
 
     var postProcessor: HeatmapPostProcessor = HeatmapPostProcessor()
     var mvfilters: [MovingAverageFilter] = []
 
+    var postProcessorModel: HeatmapPostProcessor = HeatmapPostProcessor()
+    var mvfiltersModel: [MovingAverageFilter] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(named: "pose01")
+        setUpCapturedJointView()
 
+        // お手本の画像を読み込む
+        let image = UIImage(named: "pose01")
+        imageView.image = image
+
+        // お手本画像
+        visionModel = try? VNCoreMLModel(for: EstimationModel().model)
+        requestModel = VNCoreMLRequest(model: visionModel!, completionHandler: visionRequestDidCompleteForImage)
+        requestModel!.imageCropAndScaleOption = .scaleFill
+        // お手本の画像からポーズを取得
+        predictUsingVisionForImage(uiImage: image!)
+        // モデルロード
         setUpModel()
-
+        // カメラセットアップ
         setUpCamera()
     }
 
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+        print("unwind")
     }
-    
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.videoCapture.start()
@@ -50,27 +69,16 @@ class PoseEstimationViewController: UIViewController {
         self.videoCapture.stop()
     }
 
-//    // MARK: - Setup Captured Joint View
-//    func setUpCapturedJointView() {
-//        for capturedJointView in capturedJointViews {
-//            capturedJointView.layer.borderWidth = 2
-//            capturedJointView.layer.borderColor = UIColor.gray.cgColor
-//        }
-//
-//        capturedPointsArray = capturedJointViews.map { _ in return nil }
-//
-//        for currentIndex in 0..<capturedPointsArray.count {
-//            // retrieving a value for a key
-//            if let data = UserDefaults.standard.data(forKey: "points-\(currentIndex)"),
-//                let capturedPoints = NSKeyedUnarchiver.unarchiveObject(with: data) as? [CapturedPoint?] {
-//                capturedPointsArray[currentIndex] = capturedPoints
-//                capturedJointViews[currentIndex].bodyPoints = capturedPoints.map { capturedPoint in
-//                    if let capturedPoint = capturedPoint { return PredictedPoint(capturedPoint: capturedPoint) }
-//                    else { return nil }
-//                }
-//            }
-//        }
-//    }
+    // MARK: - Setup Captured Joint View
+    func setUpCapturedJointView() {
+//        imageJointView = jointView
+
+        capturedPointsModel = capturedPoints
+        imageJointView.bodyPoints = capturedPoints.map { capturedPoint in
+            if let capturedPoint = capturedPoint { return PredictedPoint(capturedPoint: capturedPoint) }
+            else { return nil }
+        }
+    }
     
     // MARK: - Setup Core ML
     func setUpModel() {
@@ -114,22 +122,15 @@ class PoseEstimationViewController: UIViewController {
     }
     
     // CAPTURE THE CURRENT POSE
-    @IBAction func tapCapture(_ sender: Any) {
-//        let currentIndex = capturedIndex % capturedJointViews.count
-        let currentIndex = 0
-        
-        let predictedPoints = jointView.bodyPoints
-        capturedJointView.bodyPoints = predictedPoints
-        let capturedPoints: [CapturedPoint?] = predictedPoints.map { predictedPoint in
-            guard let predictedPoint = predictedPoint else { return nil }
-            return CapturedPoint(predictedPoint: predictedPoint)
-        }
-        self.capturedPoints = capturedPoints
-        
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: capturedPoints)
-        UserDefaults.standard.set(encodedData, forKey: "points-\(currentIndex)")
-        print(UserDefaults.standard.synchronize())
-    }
+//    func tapCapture() {
+//        let predictedPoints = jointView.bodyPoints
+//        imageJointView.bodyPoints = predictedPoints
+//        let capturedPoints: [CapturedPoint?] = predictedPoints.map { predictedPoint in
+//            guard let predictedPoint = predictedPoint else { return nil }
+//            return CapturedPoint(predictedPoint: predictedPoint)
+//        }
+//        self.capturedPoints = capturedPoints
+//    }
 }
 
 // MARK: - VideoCaptureDelegate
@@ -151,6 +152,31 @@ extension PoseEstimationViewController {
         try? handler.perform([request])
     }
     
+    func predictUsingVisionForImage(uiImage: UIImage) {
+        guard let requestModel = requestModel, let cgImage = uiImage.cgImage else { fatalError() }
+        let handler = VNImageRequestHandler(cgImage: cgImage, orientation: uiImage.convertImageOrientation())
+        try? handler.perform([requestModel])
+    }
+
+    func visionRequestDidCompleteForImage(request: VNRequest, error: Error?) {
+        if let observations = request.results as? [VNCoreMLFeatureValueObservation],
+            let heatmaps = observations.first?.featureValue.multiArrayValue {
+            var predictedPoints = postProcessorModel.convertToPredictedPoints(from: heatmaps)
+
+            /* --------------------- moving average filter ----------------------- */
+            if predictedPoints.count != mvfiltersModel.count {
+                mvfiltersModel = predictedPoints.map { _ in MovingAverageFilter(limit: 3) }
+            }
+            for (predictedPoint, filter) in zip(predictedPoints, mvfiltersModel) {
+                filter.add(element: predictedPoint)
+            }
+            predictedPoints = mvfiltersModel.map { $0.averagedValue() }
+            /* =================================================================== */
+            
+            imageJointView.bodyPoints = predictedPoints
+        }
+    }
+
     // MARK: - Postprocessing
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
@@ -173,28 +199,25 @@ extension PoseEstimationViewController {
         predictedPoints = mvfilters.map { $0.averagedValue() }
         /* =================================================================== */
         
-        let matchingRatios = capturedPoints.matchVector(with: predictedPoints)
-        
+        let matchingRatio = capturedPointsModel.matchVector(with: predictedPoints)
+        print(matchingRatio)
         /* =================================================================== */
         /* ======================= display the results ======================= */
         DispatchQueue.main.sync { [weak self] in
             guard let self = self else { return }
             // draw line
             self.jointView.bodyPoints = predictedPoints
-            
-//            var topCapturedJointBGView: UIView?
-//            var maxMatchingRatio: CGFloat = 0
-//            for (matchingRatio, (capturedJointBGView, capturedJointConfidenceLabel)) in zip(matchingRatios, zip(self.capturedJointBGViews, self.capturedJointConfidenceLabels)) {
-//                let text = String(format: "%.2f%", matchingRatio*100)
-//                capturedJointConfidenceLabel.text = text
-//                capturedJointBGView.backgroundColor = .clear
-//                if matchingRatio > 0.80 && maxMatchingRatio < matchingRatio {
-//                    maxMatchingRatio = matchingRatio
-//                    topCapturedJointBGView = capturedJointBGView
-//                }
-//            }
-//            topCapturedJointBGView?.backgroundColor = UIColor(red: 0.5, green: 1.0, blue: 0.5, alpha: 0.4)
+            resultLabel.text = String(format: "%.2f%", matchingRatio*100)
         }
         /* =================================================================== */
+    }
+}
+
+extension UIImage {
+    func convertImageOrientation() -> CGImagePropertyOrientation {
+        let cgiOrientations : [ CGImagePropertyOrientation ] = [
+            .up, .down, .left, .right, .upMirrored, .downMirrored, .leftMirrored, .rightMirrored
+        ]
+        return cgiOrientations[imageOrientation.rawValue]
     }
 }
