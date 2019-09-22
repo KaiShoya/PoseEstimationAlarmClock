@@ -414,12 +414,49 @@
                         <outlet property="jointView" destination="Drx-7h-B0p" id="4tE-lE-C6a"/>
                         <outlet property="resultLabel" destination="J7s-Mi-hB6" id="bLY-Z5-FTz"/>
                         <outlet property="videoPreview" destination="Zf3-TZ-R2a" id="Bb2-HA-CSq"/>
+                        <segue destination="trN-kJ-aCF" kind="show" identifier="resultSegue" id="Riw-qX-Vg2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOR-nC-3wX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="BZe-ID-hgn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2628.985507246377" y="1034.5982142857142"/>
+        </scene>
+        <!--Pose Result View Application-->
+        <scene sceneID="Dfq-Vx-2Gp">
+            <objects>
+                <viewController id="trN-kJ-aCF" customClass="PoseResultViewApplication" customModule="PosingAlarmClock" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zuw-wW-OHj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VuS-Id-nhp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="ポーズ結果" id="O4h-ew-7KY"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="resultLabel" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0f-5M-EX7">
+                                <rect key="frame" x="138" y="167" width="139" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="resultLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="LIs-Xn-yzf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JjQ-Zy-S2K"/>
+                    <connections>
+                        <outlet property="label" destination="l0f-5M-EX7" id="kCq-Jk-jdT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H98-Ul-nM0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3526" y="1035"/>
         </scene>
         <!--ポーズ選択-->
         <scene sceneID="haZ-hm-JwO">

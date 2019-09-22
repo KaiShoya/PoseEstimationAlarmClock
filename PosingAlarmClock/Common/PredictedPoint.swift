@@ -59,15 +59,25 @@ struct CapturedPointVector {
         (3, 4),
         (1, 5),
         (5, 6),
-        (6, 7)
+        (6, 7),
+        (1, 8),
+        (8, 9),
+        (9, 10),
+        (1, 11),
+        (11, 12),
+        (12, 13)
     ]
 }
 
 extension Array where Element == CapturedPoint? {
     func matchVector(with predictedPoints: [PredictedPoint?]) -> CGFloat {
-        guard predictedPoints.count >= 8, self.count >= 8 else {
-            return -100000
-        }
+//        guard predictedPoints.count >= 8, self.count >= 8 else {
+//            return -100000
+//        }
+        
+//        guard predictedPoints.count < self.count else {
+//            return 0
+//        }
         
         var numberOfValidCaputrePointAngle = 0
         var totalAngleLoss: CGFloat = 0

@@ -19,7 +19,6 @@ class PoseEstimationViewController: UIViewController {
     @IBOutlet weak var jointView: DrawingJointView!
     var capturedJointView: DrawingJointView!
     var capturedPoints: [CapturedPoint?] = []
-    var capturedPointsModel: [CapturedPoint?] = []
     
     var videoCapture: VideoCapture!
 
@@ -34,6 +33,10 @@ class PoseEstimationViewController: UIViewController {
 
     var postProcessorModel: HeatmapPostProcessor = HeatmapPostProcessor()
     var mvfiltersModel: [MovingAverageFilter] = []
+
+    // 判定結果を入れる
+    var matchingRatios: [CGFloat] = []
+    var segueFlg: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +76,6 @@ class PoseEstimationViewController: UIViewController {
     func setUpCapturedJointView() {
 //        imageJointView = jointView
 
-        capturedPointsModel = capturedPoints
         imageJointView.bodyPoints = capturedPoints.map { capturedPoint in
             if let capturedPoint = capturedPoint { return PredictedPoint(capturedPoint: capturedPoint) }
             else { return nil }
@@ -97,9 +99,8 @@ class PoseEstimationViewController: UIViewController {
         videoCapture.delegate = self
         videoCapture.fps = 30
         videoCapture.setUp(sessionPreset: .vga640x480, cameraPosition: .back) { success in
-//        videoCapture.setUp(sessionPreset: .vga640x480, cameraPosition: .front) { success in
             
-            if success {
+            if success && self.segueFlg {
                 // add preview view on the layer
                 if let previewLayer = self.videoCapture.previewLayer {
                     self.videoPreview.layer.addSublayer(previewLayer)
@@ -174,6 +175,11 @@ extension PoseEstimationViewController {
             /* =================================================================== */
             
             imageJointView.bodyPoints = predictedPoints
+            let capturedPoints: [CapturedPoint?] = predictedPoints.map { predictedPoint in
+                guard let predictedPoint = predictedPoint else { return nil }
+                return CapturedPoint(predictedPoint: predictedPoint)
+            }
+            self.capturedPoints = capturedPoints
         }
     }
 
@@ -199,17 +205,45 @@ extension PoseEstimationViewController {
         predictedPoints = mvfilters.map { $0.averagedValue() }
         /* =================================================================== */
         
-        let matchingRatio = capturedPointsModel.matchVector(with: predictedPoints)
-        print(matchingRatio)
+        let matchingRatio = capturedPoints.matchVector(with: predictedPoints)
+        if matchingRatio >= 0.8 {
+            matchingRatios.append(matchingRatio)
+        } else {
+            matchingRatios = []
+        }
+
         /* =================================================================== */
         /* ======================= display the results ======================= */
         DispatchQueue.main.sync { [weak self] in
             guard let self = self else { return }
+
+            // FIXME: 画面遷移がうまくいかない
+//            if matchingRatios.count >= 5 {
+//                if (segueFlg) {
+//                    segueFlg = false
+//                    self.performSegue(withIdentifier: "resultSegue", sender: matchingRatios)
+//                }
+//            }
             // draw line
             self.jointView.bodyPoints = predictedPoints
+            
             resultLabel.text = String(format: "%.2f%", matchingRatio*100)
         }
         /* =================================================================== */
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        for mr in matchingRatios {
+            print(mr)
+        }
+        if let matchingRatios = sender as? [CGFloat] {
+            print("passed sender")
+            if let vc = segue.destination as? PoseResultViewController {
+                print("passed segue.destination")
+                vc.matchingRatios = matchingRatios
+                print("clear")
+            }
+        }
     }
 }
 
