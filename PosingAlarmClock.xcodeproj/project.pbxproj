@@ -37,7 +37,7 @@
 		8A6BEE02233677EF00B19972 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A6BEE05233677EF00B19972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A6BEE07233677EF00B19972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A6BEE0D23367C2B00B19972 /* PoseEstimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimationViewController.swift; sourceTree = "<group>"; };
+		8A6BEE0D23367C2B00B19972 /* PoseEstimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimationViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		8A6BEE11233682DE00B19972 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = model_hourglass.mlmodel; path = "../../../../github/PoseEstimation-CoreML/PoseEstimation-CoreML/model_hourglass.mlmodel"; sourceTree = "<group>"; };
 		8A6BEE12233682DE00B19972 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = model_cpm.mlmodel; path = "../../../../github/PoseEstimation-CoreML/PoseEstimation-CoreML/model_cpm.mlmodel"; sourceTree = "<group>"; };
 		8A6BEE212336841700B19972 /* PredictedPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedPoint.swift; sourceTree = "<group>"; };

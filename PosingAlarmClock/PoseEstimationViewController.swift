@@ -218,32 +218,18 @@ extension PoseEstimationViewController {
             guard let self = self else { return }
 
             // FIXME: 画面遷移がうまくいかない
-//            if matchingRatios.count >= 5 {
-//                if (segueFlg) {
-//                    segueFlg = false
-//                    self.performSegue(withIdentifier: "resultSegue", sender: matchingRatios)
-//                }
-//            }
+            if matchingRatios.count >= 10 {
+                if (segueFlg) {
+                    segueFlg = false
+                    self.performSegue(withIdentifier: "resultSegue", sender: matchingRatios)
+                }
+            }
             // draw line
             self.jointView.bodyPoints = predictedPoints
             
             resultLabel.text = String(format: "%.2f%", matchingRatio*100)
         }
         /* =================================================================== */
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        for mr in matchingRatios {
-            print(mr)
-        }
-        if let matchingRatios = sender as? [CGFloat] {
-            print("passed sender")
-            if let vc = segue.destination as? PoseResultViewController {
-                print("passed segue.destination")
-                vc.matchingRatios = matchingRatios
-                print("clear")
-            }
-        }
     }
 }
 
