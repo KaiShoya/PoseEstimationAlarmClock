@@ -2,6 +2,9 @@
 //  DrawingJointView.swift
 //  PosingAlarmClock
 //
+//  Created by Doyoung Gwak on 27/06/2019.
+//  Copyright Â© 2019 tucan9389. All rights reserved.
+//
 //  Created by 甲斐翔也 on 2019/09/22.
 //  Copyright © 2019 甲斐翔也. All rights reserved.
 //

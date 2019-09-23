@@ -2,6 +2,9 @@
 //  PoseEstimationViewController.swift
 //  PosingAlarmClock
 //
+//  Created by Doyoung Gwak on 27/06/2019.
+//  Copyright Â© 2019 tucan9389. All rights reserved.
+//
 //  Created by 甲斐翔也 on 2019/09/22.
 //  Copyright © 2019 甲斐翔也. All rights reserved.
 //
@@ -121,17 +124,6 @@ class PoseEstimationViewController: UIViewController {
     func resizePreviewLayer() {
         videoCapture.previewLayer?.frame = videoPreview.bounds
     }
-    
-    // CAPTURE THE CURRENT POSE
-//    func tapCapture() {
-//        let predictedPoints = jointView.bodyPoints
-//        imageJointView.bodyPoints = predictedPoints
-//        let capturedPoints: [CapturedPoint?] = predictedPoints.map { predictedPoint in
-//            guard let predictedPoint = predictedPoint else { return nil }
-//            return CapturedPoint(predictedPoint: predictedPoint)
-//        }
-//        self.capturedPoints = capturedPoints
-//    }
 }
 
 // MARK: - VideoCaptureDelegate
@@ -218,7 +210,7 @@ extension PoseEstimationViewController {
             guard let self = self else { return }
 
             // FIXME: 画面遷移がうまくいかない
-            if matchingRatios.count >= 10 {
+            if matchingRatios.count >= 5 {
                 if (segueFlg) {
                     segueFlg = false
                     self.performSegue(withIdentifier: "resultSegue", sender: matchingRatios)
